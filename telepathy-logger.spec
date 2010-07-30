@@ -16,6 +16,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  dbus-glib-devel
 BuildRequires: libtelepathy-glib-devel >= 0.11.7
 BuildRequires:  libxslt-proc
+BuildRequires: gnome-doc-utils
 BuildRequires:  python-devel
 Requires: %libname >= %version
 
