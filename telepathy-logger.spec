@@ -3,7 +3,7 @@
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 Name:           telepathy-logger
-Version:        0.1.4
+Version:        0.1.5
 Release:        %mkrel 1
 Summary:        A logger for the telepathy framework
 
@@ -15,7 +15,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: dbus-glib-devel
 BuildRequires: libtelepathy-glib-devel >= 0.11.7
-BuildRequires: libGConf2-devel
+BuildRequires: glib2-devel >= 2.25.11
 BuildRequires: libxml2-devel
 BuildRequires: sqlite3-devel
 BuildRequires: libxslt-proc
@@ -47,11 +47,11 @@ Provides: lib%name-devel = %version-%release
 
 %files
 %defattr(-,root,root,-)
-%_sysconfdir/gconf/schemas/telepathy-logger.schemas
 %_libexecdir/%name
 %_datadir/dbus-1/services/org.freedesktop.Telepathy.Client.Logger.service
 %_datadir/dbus-1/services/org.freedesktop.Telepathy.Logger.service
 %_datadir/telepathy/clients/Logger.client
+%_datadir/glib-2.0/schemas/org.freedesktop.Telepathy.Logger.gschema.xml
 
 %files -n %libname
 %defattr(-,root,root,-)
@@ -81,13 +81,3 @@ rm -f %buildroot%{_libdir}/libtelepathy-logger.a
 
 %clean
 rm -rf %buildroot
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas %name
