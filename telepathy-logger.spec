@@ -21,6 +21,7 @@ BuildRequires: sqlite3-devel
 BuildRequires: libxslt-proc
 BuildRequires: gnome-doc-utils
 BuildRequires: python-devel
+BuildRequires: intltool
 Requires: %libname >= %version
 
 %description
