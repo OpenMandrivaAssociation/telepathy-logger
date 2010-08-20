@@ -4,7 +4,7 @@
 %define develname %mklibname -d %name
 Name:           telepathy-logger
 Version:        0.1.5
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A logger for the telepathy framework
 
 Group:          Networking/Instant messaging
@@ -30,9 +30,8 @@ Requires: %libname >= %version
 %package -n %libname
 Group: System/Libraries
 Summary: A logger library for the telepathy framework
-Provides: %name
-Obsoletes: %name
 Requires:       telepathy-filesystem
+Requires: %name >= %version
 
 %description -n %libname
 %name is a logger library for the telepathy framework.
