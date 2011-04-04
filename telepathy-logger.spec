@@ -1,9 +1,9 @@
-%define major 1
-%define api 0.1
+%define major 2
+%define api 0.2
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 Name:           telepathy-logger
-Version:        0.1.7
+Version:        0.2.8
 Release:        %mkrel 1
 Summary:        A logger for the telepathy framework
 
@@ -14,8 +14,9 @@ Source0:        http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{vers
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: dbus-glib-devel
-BuildRequires: libtelepathy-glib-devel >= 0.11.7
+BuildRequires: libtelepathy-glib-devel >= 0.14
 BuildRequires: glib2-devel >= 2.25.11
+BuildRequires: gobject-introspection-devel
 BuildRequires: libxml2-devel
 BuildRequires: sqlite3-devel
 BuildRequires: libxslt-proc
@@ -56,6 +57,7 @@ Provides: lib%name-devel = %version-%release
 %files -n %libname
 %defattr(-,root,root,-)
 %{_libdir}/libtelepathy-logger.so.%{major}*
+%_libdir/girepository-1.0/TelepathyLogger-%api.typelib
 
 %files -n %develname
 %defattr(-,root,root,-)
@@ -64,6 +66,7 @@ Provides: lib%name-devel = %version-%release
 %{_includedir}/%name-%api
 %{_datadir}/gtk-doc/html/telepathy-logger/
 %_libdir/pkgconfig/telepathy-logger-%api.pc
+%_datadir/gir-1.0/TelepathyLogger-%api.gir
 
 #--------------------------------------------------------------------
 
