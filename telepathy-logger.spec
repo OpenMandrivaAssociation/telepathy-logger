@@ -3,7 +3,7 @@
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 Name:           telepathy-logger
-Version:        0.2.8
+Version:        0.2.9
 Release:        %mkrel 1
 Summary:        A logger for the telepathy framework
 
