@@ -13,7 +13,7 @@ License:	LGPLv2+
 URL:       	http://telepathy.freedesktop.org/wiki/
 Source0:   	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
 
-BuildRequires:	gnome-doc-utils
+BuildRequires:	glib2.0-common
 BuildRequires:	intltool
 BuildRequires:	libxslt-proc
 BuildRequires:  pkgconfig(dbus-glib-1)
