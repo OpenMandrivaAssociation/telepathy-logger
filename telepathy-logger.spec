@@ -1,86 +1,90 @@
 %define major 2
 %define api 0.2
-%define libname %mklibname %name %major
-%define develname %mklibname -d %name
-Name:           telepathy-logger
-Version:        0.2.10
-Release:        %mkrel 1
-Summary:        A logger for the telepathy framework
+%define libname %mklibname %{name} %{major}
+%define girname %mklibname %{name}-gir %{api}
+%define develname %mklibname -d %{name}
 
-Group:          Networking/Instant messaging
-License:        LGPLv2+
-URL:            http://telepathy.freedesktop.org/wiki/
-Source0:        http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+Name:		telepathy-logger
+Version:	0.2.12
+Release:   	1
+Summary:   	A logger for the telepathy framework
+Group:     	Networking/Instant messaging
+License:	LGPLv2+
+URL:       	http://telepathy.freedesktop.org/wiki/
+Source0:   	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
 
-BuildRequires: dbus-glib-devel
-BuildRequires: libtelepathy-glib-devel >= 0.14
-BuildRequires: glib2-devel >= 2.25.11
-BuildRequires: gobject-introspection-devel
-BuildRequires: libxml2-devel
-BuildRequires: sqlite3-devel
-BuildRequires: libxslt-proc
-BuildRequires: gnome-doc-utils
-BuildRequires: python-devel
-BuildRequires: intltool
-Requires: %libname >= %version
+BuildRequires:	gnome-doc-utils
+BuildRequires:	intltool
+BuildRequires:	libxslt-proc
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(farsight2-0.10)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gst-python-0.10)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(python)
+BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(telepathy-glib) >= 0.13.4
+
+Requires:       telepathy-filesystem
 
 %description
-%name is a logger for the telepathy framework.
+%{name} is a logger for the telepathy framework.
 
-%package -n %libname
-Group: System/Libraries
-Summary: A logger library for the telepathy framework
-Requires:       telepathy-filesystem
-Requires: %name >= %version
+%package -n %{libname}
+Group:		System/Libraries
+Summary:	A logger library for the telepathy framework
 
-%description -n %libname
-%name is a logger library for the telepathy framework.
+%description -n %{libname}
+This package contains the shared library for %{name}.
 
-%package -n %develname
-Group: Development/C
-Summary: A logger library for the telepathy framework
-Requires: %libname = %version-%release
-Provides: lib%name-devel = %version-%release
+%package -n %{girname}
+Summary:    GObject Introspection interface description for %{name}
+Group:      System/Libraries
+Requires:   %{libname} = %{version}-%{release}
 
-%description -n %develname
-%name is a logger library for the telepathy framework.
+%description -n %{girname}
+GObject Introspection interface description for %{name}.
 
-%files
-%defattr(-,root,root,-)
-%_libexecdir/%name
-%_datadir/dbus-1/services/org.freedesktop.Telepathy.Client.Logger.service
-%_datadir/dbus-1/services/org.freedesktop.Telepathy.Logger.service
-%_datadir/telepathy/clients/Logger.client
-%_datadir/glib-2.0/schemas/org.freedesktop.Telepathy.Logger.gschema.xml
+%package -n %{develname}
+Group:		Development/C
+Summary:	A logger library for the telepathy framework
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
-%files -n %libname
-%defattr(-,root,root,-)
-%{_libdir}/libtelepathy-logger.so.%{major}*
-%_libdir/girepository-1.0/TelepathyLogger-%api.typelib
-
-%files -n %develname
-%defattr(-,root,root,-)
-%{_libdir}/libtelepathy-logger.la
-%{_libdir}/libtelepathy-logger.so
-%{_includedir}/%name-%api
-%{_datadir}/gtk-doc/html/telepathy-logger/
-%_libdir/pkgconfig/telepathy-logger-%api.pc
-%_datadir/gir-1.0/TelepathyLogger-%api.gir
-
-#--------------------------------------------------------------------
+%description -n %{develname}
+This package contains the development library and header files for %{name}.
 
 %prep
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+	--disable-static
+
 %make
 
 %install
-rm -rf %buildroot
+rm -rf %{buildroot}
 %makeinstall_std
-rm -f %buildroot%{_libdir}/libtelepathy-logger.a
+find %{buildroot} -name "*.la" -delete
 
-%clean
-rm -rf %buildroot
+%files
+%{_libexecdir}/%{name}
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Logger.service
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Logger.service
+%{_datadir}/telepathy/clients/Logger.client
+%{_datadir}/glib-2.0/schemas/org.freedesktop.Telepathy.Logger.gschema.xml
+
+%files -n %{libname}
+%{_libdir}/libtelepathy-logger.so.%{major}*
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/TelepathyLogger-%{api}.typelib
+
+%files -n %{develname}
+%{_libdir}/libtelepathy-logger.so
+%{_includedir}/%{name}-%{api}
+%{_datadir}/gtk-doc/html/telepathy-logger/
+%{_libdir}/pkgconfig/telepathy-logger-%{api}.pc
+%{_datadir}/gir-1.0/TelepathyLogger-%{api}.gir
+
