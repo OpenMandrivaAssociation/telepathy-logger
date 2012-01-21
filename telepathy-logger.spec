@@ -52,7 +52,8 @@ Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
-This package contains the development library and header files for %{name}.
+This package contains the development library and header files for 
+%{name}.
 
 %prep
 %setup -q
