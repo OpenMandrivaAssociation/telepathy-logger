@@ -6,7 +6,7 @@
 
 Name:		telepathy-logger
 Version:	0.2.12
-Release:   	2
+Release:   	3
 Summary:   	A logger for the telepathy framework
 Group:     	Networking/Instant messaging
 License:	LGPLv2+
@@ -59,6 +59,7 @@ This package contains the development library and header files for %{name}.
 
 %build
 %configure2_5x \
+	--enable-call \
 	--disable-static
 
 %make
