@@ -62,7 +62,7 @@ This package contains the development library and header files for %{name}.
 	--enable-call \
 	--disable-static
 
-%make
+%make LIBS='-lgmodule-2.0'
 
 %install
 rm -rf %{buildroot}
