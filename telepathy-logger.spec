@@ -5,8 +5,8 @@
 %define develname %mklibname -d %{name}
 
 Name:		telepathy-logger
-Version:	0.2.12
-Release:   	3
+Version:	0.4.0
+Release:   	1
 Summary:   	A logger for the telepathy framework
 Group:     	Networking/Instant messaging
 License:	LGPLv2+
