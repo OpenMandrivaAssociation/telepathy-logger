@@ -1,4 +1,4 @@
-%define major 2
+%define major 3
 %define api 0.2
 %define libname %mklibname %{name} %{major}
 %define girname %mklibname %{name}-gir %{api}
