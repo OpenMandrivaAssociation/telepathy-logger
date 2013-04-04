@@ -5,8 +5,8 @@
 %define develname %mklibname -d %{name}
 
 Name:		telepathy-logger
-Version:	0.4.0
-Release:   	2
+Version:	0.8.0
+Release:   	1
 Summary:   	A logger for the telepathy framework
 Group:     	Networking/Instant messaging
 License:	LGPLv2+
@@ -17,9 +17,7 @@ BuildRequires:	glib2.0-common
 BuildRequires:	intltool
 BuildRequires:	libxslt-proc
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(farstream-0.1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gst-python-0.10)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python)
 BuildRequires:	pkgconfig(sqlite3)
