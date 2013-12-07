@@ -6,7 +6,7 @@
 
 Name:		telepathy-logger
 Version:	0.8.0
-Release:   	2
+Release:   	3
 Summary:   	A logger for the telepathy framework
 Group:     	Networking/Instant messaging
 License:	LGPLv2+
