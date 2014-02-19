@@ -15,7 +15,7 @@ Source0:   	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}
 
 BuildRequires:	glib2.0-common
 BuildRequires:	intltool
-BuildRequires:	pkgconfig(libxslt)
+BuildRequires:	pkgconfig(libexslt)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(libxml-2.0)
