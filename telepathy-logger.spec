@@ -5,8 +5,8 @@
 %define develname %mklibname -d %{name}
 
 Name:		telepathy-logger
-Version:	0.8.0
-Release:   	7
+Version:	0.8.1
+Release:   	1
 Summary:   	A logger for the telepathy framework
 Group:     	Networking/Instant messaging
 License:	LGPLv2+
@@ -57,9 +57,9 @@ This package contains the development library and header files for
 %setup -q
 
 %build
-%configure2_5x \
-	--enable-call \
-	--disable-static
+export PYTHON=%__python2
+%configure \
+	--enable-call
 
 %make LIBS='-lgmodule-2.0'
 

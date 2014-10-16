@@ -1,2 +1,4 @@
+removed_sources:
+  telepathy-logger-0.8.0.tar.bz2: 66d5bbb1af442a4a0c259f5eaadc567df1ef2ef1
 sources:
-  "telepathy-logger-0.8.0.tar.bz2": 66d5bbb1af442a4a0c259f5eaadc567df1ef2ef1
+  telepathy-logger-0.8.1.tar.bz2: 122bfbbc2aa3b8dd38d4615e473603fae9b4f25f
