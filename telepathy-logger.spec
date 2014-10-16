@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.13.4
+BuildRequires:	xsltproc
 
 Requires:       telepathy-filesystem
 
