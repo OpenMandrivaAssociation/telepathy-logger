@@ -57,7 +57,6 @@ This package contains the development library and header files for
 %autosetup -p1
 
 %build
-export PYTHON=%__python2
 %configure \
 	--enable-call
 
