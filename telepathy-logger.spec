@@ -12,7 +12,7 @@ Group:		Networking/Instant messaging
 License:	LGPLv2+
 URL:		http://telepathy.freedesktop.org/wiki/
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
-
+Patch0:		0001-tools-Fix-the-build-with-Python-3.patch
 BuildRequires:	glib2.0-common
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(libxslt)
@@ -56,9 +56,13 @@ This package contains the development library and header files for
 %prep
 %autosetup -p1
 
+sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
+
 %build
 %configure \
 	--enable-call
+
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %make_build LIBS='-lgmodule-2.0'
 
