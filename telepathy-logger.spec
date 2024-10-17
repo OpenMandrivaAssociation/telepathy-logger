@@ -10,7 +10,7 @@ Release:	5
 Summary:	A logger for the telepathy framework
 Group:		Networking/Instant messaging
 License:	LGPLv2+
-URL:		http://telepathy.freedesktop.org/wiki/
+URL:		https://telepathy.freedesktop.org/wiki/
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		0001-tools-Fix-the-build-with-Python-3.patch
 BuildRequires:	glib2.0-common
