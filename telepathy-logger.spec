@@ -13,6 +13,11 @@ License:	LGPLv2+
 URL:		https://telepathy.freedesktop.org/wiki/
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.bz2
 Patch0:		0001-tools-Fix-the-build-with-Python-3.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	glib2.0-common
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(libxslt)
