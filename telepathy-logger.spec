@@ -67,7 +67,9 @@ sed -i -e 's|"/lib /usr/lib|"/%{_lib} %{_libdir}|' configure
 %configure \
 	--enable-call
 
+if [ -f libtool ]; then
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+fi
 
 %make_build LIBS='-lgmodule-2.0'
 
