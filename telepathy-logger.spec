@@ -1,4 +1,6 @@
 %define major 3
+# GLib singleton macros assign a GObject* to the subclass pointer.
+%global optflags %{optflags} -Wno-incompatible-pointer-types
 %define api 0.2
 %define libname %mklibname %{name} %{major}
 %define girname %mklibname %{name}-gir %{api}
